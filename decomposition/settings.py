@@ -1,4 +1,14 @@
 # Django settings for decomposition project.
+import socket, os
+
+if "local" in socket.gethostname():
+    ENGINE = 'sqlite3'
+    BASEPATH = os.path.realpath(os.path.dirname(__file__)) + '/..'
+    DBNAME = BASEPATH + '/database.db'
+else:
+    ENGINE = 'postgresql_psycopg2'
+    BASEPATH = '/app'
+    DBNAME = 'mydb'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,8 +21,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': ENGINE, # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': DBNAME,                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -103,6 +113,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'decomposition.urls'
 
 TEMPLATE_DIRS = (
+    BASEPATH + '/decomposition/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
