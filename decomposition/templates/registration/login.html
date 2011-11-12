@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block inHeader %}{% if username %}
+<p> You are already logged in as <a href='profile/{{ username }}'>{{ username }}</a>!? <a href="/logout"> Logout </a> first </p>
+{% endif %}{% endblock %}
+
+{% block outHeader %}{% if not username %}
+<p> Don't have an account? <a href='/register/'> Register </a> </p>
+{% endif %}{% endblock %}
+
+{% block outContent %}{% if not username %}
+{% if form.errors %}<p class="error">Sorry, that's not a valid username or password</p>{% endif %}
+<form method='post' action=''>
+  {% csrf_token %}
+  <p> Username </p> <input type='text' name='username'><br/>
+  <p> Password </p> <input type='password' name='password'><br/>
+  <input type='submit' value='login'/>
+  <input type='hidden' name='next' value="../" />
+</form>
+{% endif %}{% endblock %}
