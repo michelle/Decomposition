@@ -40,11 +40,6 @@ a:hover {
   color: #b01a1a; 
 }
 
-#footer {
-  font-size: 12px;
-  line-height: 15px;
-  margin: 30px;
-}
 
 .sidetab {
   font-family: 'Lancelot', Georgia;
@@ -80,6 +75,7 @@ a:hover {
 #header a {
   padding: 20px;
   margin-bottom: 20px;
+  color: #000;
   line-height: 30px;
   -webkit-transition:background-color 450ms ease-in;  
   -moz-transition:background-color 450ms ease-in;  
@@ -89,7 +85,6 @@ a:hover {
 
 #header a:hover {
   background-color: #fff;
-  color: #000;
 }
 
 .inactive, .assignment {
@@ -104,6 +99,7 @@ a:hover {
   -o-transition:border-radius 250ms ease-in;  
   transition:border-radius 250ms ease-in; 
   padding: 12.5px
+  z-index: 99;
 }
 
 .inactive:hover, .assignment:hover {
@@ -115,6 +111,7 @@ a:hover {
   color: #e14d4d;
   float: right;
   cursor: pointer;
+  z-index: 100;
 }
 
 .delete:hover {
@@ -183,14 +180,31 @@ h3 {
 }
 
 .butt {
-  padding: 10px;
-  background-color: #fff;
+  padding: 5px 10px;
+  background-color: #5a5235;
   border: 0px;
-  margin: 5px;
+  margin: 10px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition:background-color 250ms ease-in;  
+  -moz-transition:background-color 250ms ease-in;  
+  -o-transition:background-color 250ms ease-in;  
+  transition:background-color 250ms ease-in; 
+}
+
+.text {
+  border: 0px;
+  line-height: 30px;
+  padding: 5px 10px;
+  margin: 5px 10px;
 }
 
 .butt:hover {
-  background-color: 
+  background-color: #e14d4d;
+}
+
+.bigheight {
+  line-height: 60px;
 }
 
 </style>
@@ -247,9 +261,6 @@ $.ajaxSetup({
   {% block outContent %}
   {% endblock %}
 
-  <!--Footer-->
-  <div class="clear"></div>
-  <div id="footer">HackJamJamJamJam</div>
   
   </div>
 </body>

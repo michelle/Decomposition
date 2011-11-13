@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block inContent %}
+{% block inContent %}{% if inGuy %}
   
   <span class="sidetab">Dashboard</span><br>
   
@@ -17,4 +17,12 @@
         <h3>{{ assignment.due }}</h3>
       </div></a>
    {% endfor %}
+   {% endif %}
+{% endblock %}
+
+{% block outContent %}{% if not inGuy %}
+
+An easy, elegant way to keep all your problems in one place.
+
+{% endif %}
 {% endblock %}
