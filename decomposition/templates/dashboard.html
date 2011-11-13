@@ -34,13 +34,18 @@
         <h4>{{ assignment.percent }}%</h4>
       </div></a><span class="delete inact" id="{{ assignment.id }}">x</span>
    {% endfor %}
+   <br>
+   <span class="sidetab">Completed</span><br>
+   <div id="inactiveThings">
    {% for assignment in iAA %}
       <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
         <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
         <h4>{{ assignment.percent }}%</h4>
       </div></a> <span class="delete remo" id="{{ assignment.id }}">x</span>
+      
    {% endfor %}
+   </div>
    {% endif %}
 {% endblock %}
 
