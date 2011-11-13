@@ -1,19 +1,31 @@
 {% extends "base.html" %}
 
+{% block javascript %}
+  {{ block.super }}
+  $(window).load( function() {
+     $("#delete").click( function(){
+        $.post( "",
+                {id: $(this).attr('id') },
+                function(){
+                     location.reload(true);
+                });
+     });
+  });  
+{% endblock %}
+
 {% block inContent %}
   
   <span class="sidetab">Dashboard</span><br>
   
    {% for assignment in Activeassignments %}
       <a href="assignment/{{ assignment.id }}" ><div class="assignment" id={{ assignment.id }}>
-        <h2>{{ assignment.title }} <span class="delete">x</span></h2>
+        <h2>{{ assignment.title }} <span class="delete" id="{{ assignment.id }}">x</span></h2>
         <h3>{{ assignment.due }}</h3>
       </div></a>
    {% endfor %}
    {% for assignment in inActiveassignments %}
-
       <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
-        <h2>{{ assignment.title }} <span class="delete">x</span></h2>
+        <h2>{{ assignment.title }} <span class="delete" id="{{ assignment.id }}">x</span></h2>
         <h3>{{ assignment.due }}</h3>
       </div></a>
    {% endfor %}

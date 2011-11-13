@@ -16,6 +16,11 @@ def render_to_responseC( request, link, context ):
 def dashboard( request ):
     inGuy = isAuthUser( request )
     Activeassignments = Assignment.objects.filter( user=inGuy )
+    if request.method == 'POST' and inGuy:
+        id = request.POST['id']
+        AssignmentObj = Activeassingments.get( id=id )
+        AssignmentObj.active = False
+        AssignmentObj.save()            
     return render_to_response( 'dashboard.html', locals() )
 
 def create( request ):
@@ -28,6 +33,8 @@ def create( request ):
                                     numofprobs=len(problems))
         AssignmentObj.save()
         for i, problem in enumerate(problems):
+            if not title:
+                title = "Problem :" + str( i )
             ProblemObj = Problem( Ass=AssignmentObj,
                                   title=problem[ 'question' ],
                                   index=i,
