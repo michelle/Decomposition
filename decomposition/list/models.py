@@ -18,7 +18,7 @@ class Assignment( models.Model ):
 class Problem( models.Model ):
     Ass = models.ForeignKey( Assignment )
     title = models.CharField( max_length=100 )
-    complete = models.BooleanField(default=True)
+    complete = models.BooleanField(default=False)
     index = models.IntegerField()
     
     def calculateNotes(self):
