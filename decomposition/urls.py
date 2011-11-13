@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.auth.views import login, logout
-from decomposition.views import dashboard, gen, create
+from decomposition.views import dashboard, gen, create, assign
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -10,6 +10,7 @@ urlpatterns = patterns('',
                        ('^login/$', login ),
                        ('^logout/$', logout ),
                        ('^create/$', create ),
+                       (r'^assignment/(\w+)/?', assign ),
                        ('^gen/$', gen ),
 
     # Examples:

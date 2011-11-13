@@ -2,15 +2,15 @@
 
 {% block inContent %}
    {% for assignment in Activeassignments %}
-      <div class="assignment">
+      <a href="assignment/{{ assignment.id }}" ><div class="assignment" id={{ assignment.id }}>
         <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
-      </div>
+      </div></a>
    {% endfor %}
    {% for assignment in inActiveassignments %}
-      <div class="inactive">
+      <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
         <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
-      </div>
+      </div></a>
    {% endfor %}
 {% endblock %}
