@@ -34,8 +34,7 @@ def create( request ):
                                     numofprobs=len(problems))
         AssignmentObj.save()
         for i, problem in enumerate(problems):
-            if not title:
-                title = "Problem :" + str( i )
+            title = problem[ 'question' ] if problem[ 'question' ] else ( "Problem :" + str( i ) )
             ProblemObj = Problem( Ass=AssignmentObj,
                                   title=problem[ 'question' ],
                                   index=i,
