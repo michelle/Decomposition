@@ -1,7 +1,8 @@
 # Django settings for decomposition project.
 import socket, os
 
-if "local" in socket.gethostname():
+if "Huan" in socket.gethostname() or \
+        "Michelle" in socket.gethostname():
     ENGINE = 'sqlite3'
     BASEPATH = os.path.realpath(os.path.dirname(__file__)) + '/..'
     DBNAME = BASEPATH + '/database.db'

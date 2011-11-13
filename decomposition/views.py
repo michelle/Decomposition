@@ -42,8 +42,11 @@ def create( request ):
     inGuy = isAuthUser( request )
     if request.method == 'POST' and inGuy:
         problems = eval(request.POST['problems'])
+        title = request.POST['title']
+        if not title:
+            title = "Untitled"
         AssignmentObj = Assignment( user=inGuy,
-                                    title=request.POST['title'],
+                                    title=title,
                                     due=datetime.datetime.now(),
                                     numofprobs=len(problems))
         AssignmentObj.save()
@@ -120,7 +123,7 @@ def register( request ):
         form = UserCreationForm( request.POST )
         if form.is_valid():
             new_user = form.save()
-            success = "Registration successfully, you can login nowZ"
+            success = "Registration successfully, you can login now"
             return render_to_responseC( request, 'success.html', locals() )
     else:
         form = UserCreationForm()
