@@ -2,6 +2,7 @@
 
 {% block javascript %}
   {{ block.super }}
+  <script type="text/javascript">
   $(window).load( function() {
      $(".delete").click( function(){
         $.post( "",
@@ -11,6 +12,7 @@
                 });
      });
   });  
+  </script>
 {% endblock %}
 
   {% block inContent %}{% if inGuy %}
