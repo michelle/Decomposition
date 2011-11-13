@@ -5,4 +5,4 @@ lib
 .Python
 *.pyc
 *~
-databse.db
+database.db

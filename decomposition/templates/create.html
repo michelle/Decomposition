@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(window).load( function() {
+  
+  $(".firstButton").click( function (){
+     
+  });
+  
+  $(".secondButton").click( function(){
+
+  });
+
+  });
+</script>
+//We want to do something like, if none of the boxes are click send a post
+
+//Else if something of the things are pressed dyanically create boxes for users.
+
+{% endblock %}
+
+{% block outHeader %}{% if not inGuy %}
+<p> You must <a href='/login/'> Login </a> or <a href='/register/'> Register </a> before you can post assignments! </p>
+{% endif %}{% endblock %}
+
+{% block inContent %}{% if inGuy %}
+  <p>Title</p>
+  <input type='text' value='' class="firstTitle"><br/>
+  How Many Questions?
+  <input type='number' value='1' class="howManyQuestion"><br/>
+  Do You Want to include..
+  <br/>
+  <input type="checkbox" class="QuestionTitle">Question Title<br/>
+  <input type="checkbox" class="QuestionPoints">Question Points<br/>
+
+  <button type="button" class="firstButton" >Next</button>
+  <button type="button" class="secondButton" >Next, I should be initially hidden</button>
+  
+
+<form method='post' action='' value='add'>
+  {% csrf_token %}
+</form>
+{% endif %}{% endblock %}
