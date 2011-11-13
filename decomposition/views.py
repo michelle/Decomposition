@@ -15,6 +15,7 @@ def render_to_responseC( request, link, context ):
     return render_to_response( link, context )
 
 def dashboard( request ):
+    thing = {}
     inGuy = isAuthUser( request )
     All = Assignment.objects.filter( user=inGuy )
     AA = All.filter( active=True )
