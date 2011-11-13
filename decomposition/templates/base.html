@@ -6,10 +6,8 @@
 
 <body>
   <!--Header-->
-  {% block inHeader %}{% if inGuy%}
+  {% block inHeader %}{% if inGuy %}
   <a href='/'> Home </a>
-  <p> You are <a href='/profile/{{ inGuy}}'>{{ inGuy}}</a>!? </p>
-	<a href='/posting/'> Post a dream! </a>
   {% endif %}{% endblock %}
 
   {% block outHeader %}{% if not inGuy%}
@@ -18,12 +16,6 @@
 
   <!--Content-->
 
-  {% block errorz %}
-     {% for error in errors %}
-         {{ error }}
-     {% endfor %}
-  {% endblock %}
-
   {% block inContent %}
   {% endblock %}
 
@@ -31,28 +23,6 @@
   {% endblock %}
 
   {% block outContent %}
-  {% endblock %}
-
-  {% if users %}{% block usersTitle %}<h3>Recent Users</h3>{% endblock %}{% endif %}
-
-  {% block userz %}
-    {% for user in users %}
-      <p><a href='profile/{{ user.username }}'> {{ user.username }} </a></p>
-    {% endfor %}
-  {% endblock %}
-
-  {% if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
-
-  {% block postz %}
-    {% for post in posts %}
-       {% if post.public or inGuy == post.user.username %}
-         <h3> Title: <a href="/posts/{{ post.id }}" >{{ post.title }} </a></h3>
-         <p> Content: {{ post.content }} </p>
-         <p> created date: {{ post.time }} </p>
-         <p> created by: {{ post.user.username }} </p>
-         <p> liked by: {{ post.likes }} users </p>
-       {% endif %}
-    {% endfor %}
   {% endblock %}
 
   <!--Footer-->
