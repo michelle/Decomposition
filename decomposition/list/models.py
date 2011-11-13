@@ -5,12 +5,12 @@ from django.contrib.auth.models import User
 class Assignment( models.Model ):
     user = models.ForeignKey( User )
     title = models.CharField(max_length=100)
-    due = DateTimeField()
+    due = models.DateTimeField()
     
 class Problem( models.Model ):
     Ass = models.ForeignKey( Assignment )
     title = models.CharField( max_length=100 )
     
-class Notes( models.Model ):
+class Note( models.Model ):
     Prob = models.ForeignKey( Problem )
     text = models.CharField( max_length=100 )
