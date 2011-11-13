@@ -22,7 +22,7 @@ def create( request ):
     inGuy = isAuthUser( request )
     if request.method == 'POST' and inGuy:
         AssingmentObj = Assignment( user=inGuy,
-                                    title=request.title,
+                                    title=request.POST['title'],
                                     due=datetime.datetime.now() )
         AssingmentObj.save()
         success = True

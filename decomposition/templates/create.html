@@ -5,8 +5,6 @@
   <script type="text/javascript">
 
   genBoxes = function( number, questions, points ){
-    var questions = true;
-    var points = true;
     for(var i = 0; i < number; i++ ){
       if( questions ){
                 $("<p>Question " + i + "</p>").appendTo("#growOnBoxes");
@@ -18,10 +16,13 @@
                 $("<br/>").appendTo("#growOnBoxes");
       }
     }
+    t = number;
+    q = questions;
+    p = points;
   }
 
   getData = function( number, question, points){
-    var data = { question : {}
+    var data = { question : {},
                  points :{} } 
     for(var i = 0; i < number; i++ ){
       if( questions ){
@@ -52,20 +53,17 @@
                  data : "" } );
     }
   });
+
   $(".secondButton").click( function(){
        $.post( "",
                { title : $(".questionTitle").val(),
                  yesQuest : yesQuest,
                  yesPoint : yesPoint,
-                 data : getData(); } );
+                 data : getData( t, q, p ) } );
   });
 
   });
 </script>
-//We want to do something like, if none of the boxes are click send a post
-
-//Else if something of the things are pressed dyanically create boxes for users.
-
 {% endblock %}
 
 {% block outHeader %}{% if not inGuy %}
@@ -84,7 +82,7 @@
 
   <button type="button" class="firstButton" >Next</button>
   <div id="growOnBoxes"></div>
-  <button type="button" class="secondButton" >Next, I should be initially hidden</button>
+  <button type="button" class="secondButton" >Next</button>
   
 
 <form method='post' action='' value='add'>
