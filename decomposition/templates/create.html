@@ -3,14 +3,61 @@
 {% block javascript %}
   {{ block.super }}
   <script type="text/javascript">
-  $(window).load( function() {
-  
-  $(".firstButton").click( function (){
-     
-  });
-  
-  $(".secondButton").click( function(){
 
+  genBoxes = function( number, questions, points ){
+    var questions = true;
+    var points = true;
+    for(var i = 0; i < number; i++ ){
+      if( questions ){
+                $("<p>Question " + i + "</p>").appendTo("#growOnBoxes");
+                $("<input/>").attr("type","text").attr("id", "newQuest" + i).addClass("newQuest").appendTo("#growOnBoxes");
+      }
+      if( points ) {
+                $("<p>Points</p>").appendTo("#growOnBoxes");
+                $("<input/>").attr("type","text").attr("id", "newQuest" + i).addClass("newPoint").appendTo("#growOnBoxes");
+                $("<br/>").appendTo("#growOnBoxes");
+      }
+    }
+  }
+
+  getData = function( number, question, points){
+    var data = { question : {}
+                 points :{} } 
+    for(var i = 0; i < number; i++ ){
+      if( questions ){
+                data.question[ i ] = $("#newQuest" + i).val();
+      }
+      if( points ) {
+                data.question[ i ] = $("#newPoint" + i).val();
+      }
+    }
+    return data;
+  }  
+
+  $(window).load( function() {
+  $(".secondButton").hide();
+
+  $(".firstButton").click( function (){
+    var yesQuest = $(".questionTitle").attr("checked");
+    var yesPoint = $(".questionPoint" ).attr("checked");
+    if (  yesQuest || yesPoint ) {
+       genBoxes( $(".howManyQuestion").val(), yesQuest, yesPoint );
+       $(".firstButton").hide();
+       $(".secondButton").show();
+    } else {
+       $.post( "",
+               { title : $(".questionTitle").val(),
+                 yesQuest : yesQuest,
+                 yesPoint : yesPoint,
+                 data : "" } );
+    }
+  });
+  $(".secondButton").click( function(){
+       $.post( "",
+               { title : $(".questionTitle").val(),
+                 yesQuest : yesQuest,
+                 yesPoint : yesPoint,
+                 data : getData(); } );
   });
 
   });
@@ -27,15 +74,16 @@
 
 {% block inContent %}{% if inGuy %}
   <p>Title</p>
-  <input type='text' value='' class="firstTitle"><br/>
+  <input type='text' value='' class="firstTitle"/><br/>
   How Many Questions?
-  <input type='number' value='1' class="howManyQuestion"><br/>
+  <input type='number' value='1' class="howManyQuestion"/><br/>
   Do You Want to include..
   <br/>
-  <input type="checkbox" class="QuestionTitle">Question Title<br/>
-  <input type="checkbox" class="QuestionPoints">Question Points<br/>
+  <input type="checkbox" class="questionTitle"/>Question Title<br/>
+  <input type="checkbox" class="questionPoint"/>Question Points<br/>
 
   <button type="button" class="firstButton" >Next</button>
+  <div id="growOnBoxes"></div>
   <button type="button" class="secondButton" >Next, I should be initially hidden</button>
   
 
