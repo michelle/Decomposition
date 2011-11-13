@@ -123,7 +123,7 @@ def register( request ):
         form = UserCreationForm( request.POST )
         if form.is_valid():
             new_user = form.save()
-            success = "Registration successfully, you can login nowZ"
+            success = "Registration successfully, you can login now"
             return render_to_responseC( request, 'success.html', locals() )
     else:
         form = UserCreationForm()
