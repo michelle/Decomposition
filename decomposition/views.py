@@ -55,13 +55,27 @@ def create( request ):
 
 def assign( request, id ):
     inGuy = isAuthUser( request )
+    if request.method == 'POST':
+        kind = request.POST['kind']
+        id1 = request.POST['id' ]
+        if kind == "minus":
+            NoteObj = Note.objects.filter( id=id1 )
+            NoteObj.delete()
+        elif kind == "plus":
+            ProblemObj = Problem.objects.get( id=id1 )
+            text = request.POST['text' ]
+            NoteObj = Note( prob=ProblemObj,
+                            text=text)
+            NoteObj.save()
+        else:
+            assert False, kind
     try:
         assignment = Assignment.objects.get( id=id )
         problems = Problem.objects.filter( Ass=assignment )
     except:
         # Direct to template 404 or something
         assert False
-    return render_to_response( 'assignment.html', locals() )
+    return render_to_responseC(request, 'assignment.html', locals() )
     
 
 def gen( request ):

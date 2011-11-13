@@ -1,14 +1,48 @@
 {% extends "base.html" %}
 
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(window).load( function() {
+     $(".minus").click( function(){
+        $.post( "",
+                {id: $(this).attr('id'),
+                 kind: "minus" },
+                function(){
+                     location.reload(true);
+                });
+     });
+     $(".plus").click( function(){
+        var textBox = $("<input type='text'/>")
+        var bar = $(this).attr('id');
+        var textSubmit = $("<button> OK! </button>").click( function(){
+          $.post( "",
+                {id: bar,
+                 kind: "plus",
+                 text: textBox.val()},
+                function(){
+                     location.reload(true);
+                });
+        });
+        $(this).parent().parent().append( textBox ).append( textSubmit );
+     });
+  });
+
+  
+  </script>
+{% endblock %}
+
 
 {% block content %}
 <div class="paper">
    <h2>Assignment: {{ assignment.title }}</h2>
    {% for problem in problems %}
-      <div class="problem fin{{ problem.complete }}" id={{ problem.id }}>
-        <h4><span class="minus">x</span> <span class="plus">add note</span>Problem: {{ problem.index }} {{ problem.title }}</h4>
+      <div class="problem fin{{ problem.complete }}" id="{{ problem.id }}">
+        <h4><span class="minus">x</span> <span class="plus" id="{{ problem.id }}">add note</span>Problem: {{ problem.index }} {{ problem.title }}</h4>
       </div>
-
+      {% for note in problem.notes %}
+          <div class="note"> {{ note }} </div>
+      {% endfor %}
    {% endfor %}
    </div>
 {% endblock %}
