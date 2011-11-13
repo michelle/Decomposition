@@ -6,6 +6,7 @@
 
 <link href='http://fonts.googleapis.com/css?family=Lancelot' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Fanwood+Text' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 
 <style>
 html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{font-size:100%;}
@@ -37,6 +38,12 @@ a {
 
 a:hover {
   color: #b01a1a; 
+}
+
+#footer {
+  font-size: 12px;
+  line-height: 15px;
+  margin: 30px;
 }
 
 #header h1 {
@@ -104,6 +111,8 @@ a:hover {
 
 h2 {
   font-size: 20px;
+  font-family: 'Pompiere', Georgia;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -185,13 +194,9 @@ $.ajaxSetup({
   {% endblock %}
 
   <!--Footer-->
-  {% block inFooter %}{% if inGuy %}
-  {% endif %}{% endblock %}
-
-  {% block outFotter %}{% if not inGuy %}
-  
-  {% endif %}{% endblock %}
   <div class="clear"></div>
+  <div id="footer">HackJamJamJamJam</div>
+  
   </div>
 </body>
 </html>
