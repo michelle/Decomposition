@@ -13,9 +13,9 @@
                 });
      });
      $(".plus").click( function(){
-        var textBox = $("<input type='text'/>")
+        var textBox = $("<input class='text2' type='text'/>")
         var bar = $(this).attr('id');
-        var textSubmit = $("<button> OK! </button>").click( function(){
+        var textSubmit = $("<button class='butt'> OK! </button>").click( function(){
           $.post( "",
                 {id: bar,
                  kind: "plus",
@@ -48,7 +48,7 @@
 
       </div>
       {% for note in problem.notes %}
-       <div class="note"><h4><span class="minusNote" id="{{ note.id }}">x</span> {{ note.text }} </h4></div>
+       <div class="note"><h4> {{ note.text }} </h4></div>
       {% endfor %}
    {% endfor %}
    </div>
