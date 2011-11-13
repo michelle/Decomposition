@@ -35,10 +35,17 @@
 
 {% block content %}
 <div class="paper">
-   <h2>Assignment: {{ assignment.title }}</h2>
+   <h2>{{ assignment.title }}</h2>
    {% for problem in problems %}
       <div class="problem fin{{ problem.complete }}" id="{{ problem.id }}">
-        <h4><span class="minusProb" id="{{ problem.id }}">x</span> <span class="plus" id="{{ problem.id }}">add note</span>Problem: {{ problem.index }} {{ problem.title }}</h4>
+
+        <h4><span class="minusProb" id="{{ problem.id }}">x</span> <span class="plus" id="{{ problem.id }}">add note</span>
+<strong>#{{ problem.index }}.</strong> {{ problem.title }}
+
+</h4>
+
+
+
       </div>
       {% for note in problem.notes %}
        <div class="note"><h4><span class="minusNote" id="{{ note.id }}">x</span> {{ note.text }} </h4></div>
