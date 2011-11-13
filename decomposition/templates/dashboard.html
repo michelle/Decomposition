@@ -21,15 +21,15 @@
   
    {% for assignment in Activeassignments %}
       <a href="assignment/{{ assignment.id }}" ><div class="assignment" id={{ assignment.id }}>
-        <h2>{{ assignment.title }} <span class="delete" id="{{ assignment.id }}">x</span></h2>
+        <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
-      </div></a>
+      </div></a><span class="delete" id="{{ assignment.id }}">x</span>
    {% endfor %}
    {% for assignment in inActiveassignments %}
       <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
-        <h2>{{ assignment.title }} <span class="delete" id="{{ assignment.id }}">x</span></h2>
+        <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
-      </div></a>
+      </div></a> <span class="delete" id="{{ assignment.id }}">x</span>
    {% endfor %}
    {% endif %}
 {% endblock %}
