@@ -19,5 +19,8 @@ class Problem( models.Model ):
     Ass = models.ForeignKey( Assignment )
     title = models.CharField( max_length=100 )
     complete = models.BooleanField(default=True)
-    text = models.CharField( max_length=100 )    
     index = models.IntegerField()
+
+class Note( models.Model ):
+    text = models.CharField( max_length=100 )    
+    prob = models.ForeignKey( Problem )

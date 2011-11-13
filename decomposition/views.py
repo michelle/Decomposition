@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
-from decomposition.list.models import Assignment, Problem
+from decomposition.list.models import Assignment, Problem, Note
 from django.utils import simplejson
 import datetime
 
@@ -82,6 +82,14 @@ def gen( request ):
                                    numofprobs=numofprobs,
                                    due=due )
         AssignObject.save()
+        for problemi in xrange( numofprobs ):
+            ProblemObject = Problem( Ass = AssignObject,
+                                     index = problemi)
+            ProblemObject.save()
+            for notei in xrange( 3 ):
+                NoteObject = Note( text="this is a hard problem",
+                                   prob=ProblemObject )
+                NoteObject.save()
     return HttpResponse( 'itz done' )
 
 def register( request ):
@@ -89,7 +97,8 @@ def register( request ):
         form = UserCreationForm( request.POST )
         if form.is_valid():
             new_user = form.save()
-            return render_to_responseC( request, 'result.html', locals() )
+            success = "Registration successfully, you can login nowZ"
+            return render_to_responseC( request, 'success.html', locals() )
     else:
         form = UserCreationForm()
     return render_to_responseC( request, "registration/register.html", locals() )
