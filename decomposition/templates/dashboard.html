@@ -29,7 +29,7 @@
   {% block inContent %}{% if inGuy %}
   <span class="sidetab">Dashboard</span><a href="/create"><span class="create">Add New</span></a><br> 
    {% if not AA %}
-      Congrats you have nothing to do.
+      Looks like there's nothing to do right now!
    {% endif %}
    {% for assignment in AA %}
       <a href="assignment/{{ assignment.id }}" ><div class="assignment" id={{ assignment.id }}>
@@ -45,7 +45,7 @@
       <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
         <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
-        <h4>{{ assignment.percent }}%</h4>
+        <h4>{{ assignment.percent }}% complete</h4>
       </div></a> <span class="delete remo" id="{{ assignment.id }}">x</span>
       
    {% endfor %}

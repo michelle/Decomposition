@@ -7,14 +7,12 @@
   genBoxes = function( number, questions, points ){
     for(var i = 0; i < number; i++ ){
       if( questions || points ) {
-                $("<p>Question " + (i + 1) + "</p>").appendTo("#growOnBoxes");
+                $("<br><strong># " + (i + 1) + ". </strong>").appendTo("#growOnBoxes");
       }                 
       if( questions ){
-                $("<p>Title</p>").appendTo("#growOnBoxes");
                 $("<input/>").attr("type","text").attr("id", "newQuest" + i).attr("class", "text").addClass("newQuest").appendTo("#growOnBoxes");
       }
       if( points ) {
-                $("<p>Points</p>").appendTo("#growOnBoxes");
                 $("<input/>").attr("type","text").attr("id", "newPoint" + i).attr("class", "text").addClass("newPoint").appendTo("#growOnBoxes");
                 $("<br/>").appendTo("#growOnBoxes");
       }
