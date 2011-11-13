@@ -6,8 +6,10 @@ from django.contrib.auth.views import login, logout
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+#                       ('', main ),
                        ('^login/$', login ),
                        ('^logout/$', logout ),
+
     # Examples:
     # url(r'^$', 'decomposition.views.home', name='home'),
     # url(r'^decomposition/', include('decomposition.foo.urls')),
