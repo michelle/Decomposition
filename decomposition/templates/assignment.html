@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+   <h2>Assignment: {{ assignment.title }}</h2>
+   {% for problem in problems %}
+      <div class="problem fin{{ problem.complete }}" id={{ problem.id }}>
+        <h2>Problem: {{ problem.index }} {{ problem.title }}</h2>
+      </div>
+   {% endfor %}
+{% endblock %}
