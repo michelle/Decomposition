@@ -56,7 +56,7 @@
        $.post( "",
                { 
                  title : $(".firstTitle").val(),
-                 problems: "{}" },
+                 problems: getData( $(".howManyQuestion").val(), false, false ) },
                function(data){
                   $("#all").hide();
                   $("#success").show();
@@ -66,7 +66,7 @@
 
   $(".secondButton").click( function(){
        $.post( "",
-               { title : $(".questionTitle").val(),
+               { title : $(".firstTitle").val(),
                  problems : getData( t, q, p ) },
                function(data){
                   $("#all").hide();
@@ -96,9 +96,9 @@
   <button type="button" class="firstButton butt" >Next</button>
   <div id="growOnBoxes"></div>
   <button type="button" class="secondButton butt" >Next</button>
-  
-{% endif %}{% endblock %}
-</div>
+  </div>
 <div id="success">
   Your crap has been successfully saved
 </div>
+  
+{% endif %}{% endblock %}

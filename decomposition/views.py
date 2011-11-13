@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
-from decomposition.list.models import Assignment, Problem, Note
+from decomposition.list.models import Assignment, Problem
 from django.utils import simplejson
 import datetime
 
@@ -18,19 +18,19 @@ def dashboard( request ):
     Activeassignments = Assignment.objects.filter( user=inGuy )
     return render_to_response( 'dashboard.html', locals() )
 
-
 def create( request ):
     inGuy = isAuthUser( request )
     if request.method == 'POST' and inGuy:
+        problems = eval(request.POST['problems'])
         AssignmentObj = Assignment( user=inGuy,
                                     title=request.POST['title'],
-                                    due=datetime.datetime.now() )
+                                    due=datetime.datetime.now(),
+                                    numofprobs=len(problems))
         AssignmentObj.save()
-        problems = eval(request.POST['problems'])
-        for problem in problems:
+        for i, problem in enumerate(problems):
             ProblemObj = Problem( Ass=AssignmentObj,
                                   title=problem[ 'question' ],
-                                  # point=0,
+                                  index=i,
                                   )
             ProblemObj.save()
         return HttpResponse(simplejson.dumps({"success":"Your crap has been successfully saved" }), 'application/json' )
@@ -57,11 +57,12 @@ def gen( request ):
         UserObject = User.objects.get( username=user )
     
     # Create two assignemnts for the user
-    for title, due in [ ('Physics 1.2', datetime.datetime.now()),
-                        ('Math 1.2', datetime.datetime.now()),
-                        ]:
+    for title, numofprobs, due in [ ('Physics 1.2', 3, datetime.datetime.now()),
+                                    ('Math 1.2', 4, datetime.datetime.now()),
+                                    ]:
         AssignObject = Assignment( user=UserObject,
                                    title=title,
+                                   numofprobs=numofprobs,
                                    due=due )
         AssignObject.save()
     return HttpResponse( 'itz done' )
