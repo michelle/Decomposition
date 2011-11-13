@@ -46,12 +46,31 @@ a:hover {
   margin: 30px;
 }
 
-#header h1 {
+.sidetab {
   font-family: 'Lancelot', Georgia;
   font-size: 30px;
+  padding: 15px 25px 15px 55px;
+  text-align: left;
+  background-color: #e9e0c5;
+  line-height: 100px;
+  width: 100%;
+  margin-left: -40px;
+  margin-right: 800px;
+  clear: both;
+}
+
+#header h1 {
+  text-align: center;
+  font-family: 'Lancelot', Georgia;
+  font-size: 60px;
   line-height: 80px;
+  margin-left: 0px;
   color: #897e5a;
+  width: 100%;
+  padding-left: 0px;
+  background-color: transparent;
   text-shadow: 1px 1px 1px #fff;
+  margin-bottom: 0px;
 }
 
 #header { 
@@ -75,24 +94,44 @@ a:hover {
 
 .inactive, .assignment {
   float: left;
-  width: 200px; 
+  width: 180px; 
   height: 150px;
   background-color: #fff;
   margin: 10px;
-  border-radius: 15px;
+  border-radius: 25px;
   -webkit-transition:border-radius 250ms ease-in;  
   -moz-transition:border-radius 250ms ease-in;  
   -o-transition:border-radius 250ms ease-in;  
   transition:border-radius 250ms ease-in; 
+  padding: 12.5px
 }
 
 .inactive:hover, .assignment:hover {
   border-radius: 0px;
+  cursor: pointer;
+}
+
+.delete {
+  color: #e14d4d;
+  float: right;
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: #8d1414;
 }
 
 .big {
-  font-size: 70px;
+  font-size: 90px;
   color: #5a5235;
+  -webkit-transition:color 450ms ease-in;  
+  -moz-transition:color 450ms ease-in;  
+  -o-transition:color 450ms ease-in;  
+  transition:color 450ms ease-in; 
+}
+
+.big:hover {
+  color: #e14d4d;
 }
 
 #wrap {
@@ -113,12 +152,18 @@ h2 {
   font-size: 20px;
   font-family: 'Pompiere', Georgia;
   text-transform: uppercase;
+  border-bottom: 1px dashed #e14d4d;
+  margin: 0 -10px 0 -10px;
+  padding: 0 10px 0 10px;
 }
 
 h3 {
   font-size: 15px;
   text-transform: uppercase;
+  font-family: 'Pompiere', Georgia;
+  border-bottom: 1px solid #a0e3e9;
   font-weight: normal;
+  margin: 0 -10px 0 -10px;
 }
 
 .inactive h2 {
@@ -137,7 +182,16 @@ h3 {
 
 }
 
+.butt {
+  padding: 10px;
+  background-color: #fff;
+  border: 0px;
+  margin: 5px;
+}
 
+.butt:hover {
+  background-color: 
+}
 
 </style>
 

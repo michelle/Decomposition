@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 
 {% block inContent %}
+  
+  <span class="sidetab">Dashboard</span><br>
+  
    {% for assignment in Activeassignments %}
       <div class="assignment">
-        <h2>{{ assignment.title }}</h2>
+        <h2>{{ assignment.title }} <span class="delete">x</span></h2>
         <h3>{{ assignment.due }}</h3>
       </div>
    {% endfor %}
    {% for assignment in inActiveassignments %}
       <div class="inactive">
-        <h2>{{ assignment.title }}</h2>
+        <h2>{{ assignment.title }} <span class="delete">x</span></h2>
         <h3>{{ assignment.due }}</h3>
       </div>
    {% endfor %}
