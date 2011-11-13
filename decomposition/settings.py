@@ -10,10 +10,10 @@ else:
     BASEPATH = '/app'
     DBNAME = 'mydb'
 
-if "huan" in socket.gethostname():
-    S = '/User/Doboy/Django/decomposition/decomposition/assets/'
-elif "michelle" in socket.gethostname():
-    S = '/User/Doboy/Django/decomposition/decomposition/assets/'
+if "Huan" in socket.gethostname():
+    S = '/User/Doboy/Django/decomposition/decomposition/assets/css/'
+elif "Michelle" in socket.gethostname():
+    S = '/User/Doboy/Django/decomposition/decomposition/assets/css/'
 else:
     S = '/app/assets'
 
@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'decomposition.list',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

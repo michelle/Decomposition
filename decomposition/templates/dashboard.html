@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block inContent %}{% if not inGuy %}
+{% block inContent %}
    {% for assignment in Activeassignments %}
-      <div>
+      <div class="assignment">
         {{ assignment.title }}
         {{ assignment.due }}
       </div>
@@ -13,4 +13,4 @@
         {{ assignment.due }}
       </div>
    {% endfor %}
-{% endif %}{% endblock %}
+{% endblock %}

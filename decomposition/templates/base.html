@@ -6,7 +6,9 @@
 <link href="http://michellebu.com/glocal/style.css" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Fanwood+Text' rel='stylesheet' type='text/css'>
 {% endblock %}
-{% block javascript %}{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>  
+{% endblock %}
 </head>
 
 <body>
@@ -14,7 +16,9 @@
   {% block inHeader %}{% if inGuy %}
   <a href='/'> Home</a>
   {% endif %}{% endblock %}
-
+  
+  
+  
   {% block outHeader %}{% if not inGuy%}
   <p> <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your assignments! </p>
   {% endif %}{% endblock %}
