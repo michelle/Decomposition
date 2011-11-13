@@ -33,6 +33,8 @@
         <h3>{{ assignment.due }}</h3>
       </div></a><span class="delete inact" id="{{ assignment.id }}">x</span>
    {% endfor %}
+   <br>
+   <span class="sidetab">Completed</span><br>
    {% for assignment in iAA %}
       <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
         <h2>{{ assignment.title }}</h2>
