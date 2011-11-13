@@ -34,10 +34,10 @@ def create( request ):
                                     numofprobs=len(problems))
         AssignmentObj.save()
         for i, problem in enumerate(problems):
-            title = problem[ 'question' ] if problem[ 'question' ] else ( "Problem :" + str( i ) )
+            title = problem[ 'question' ] if problem[ 'question' ] else ( "Problem :" + str( i + 1 ) )
             ProblemObj = Problem( Ass=AssignmentObj,
                                   title=problem[ 'question' ],
-                                  index=i,
+                                  index=i+1,
                                   )
             ProblemObj.save()
         return HttpResponse(simplejson.dumps({"success":"Your crap has been successfully saved" }), 'application/json' )
