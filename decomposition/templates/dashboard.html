@@ -3,14 +3,14 @@
 {% block inContent %}
    {% for assignment in Activeassignments %}
       <div class="assignment">
-        {{ assignment.title }}
-        {{ assignment.due }}
+        <h2>{{ assignment.title }}</h2>
+        <h3>{{ assignment.due }}</h3>
       </div>
    {% endfor %}
    {% for assignment in inActiveassignments %}
-      <div>
-        {{ assignment.title }}
-        {{ assignment.due }}
+      <div class="inactive">
+        <h2>{{ assignment.title }}</h2>
+        <h3>{{ assignment.due }}</h3>
       </div>
    {% endfor %}
 {% endblock %}

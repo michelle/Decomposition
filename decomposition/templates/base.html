@@ -12,12 +12,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,pre,code,form,fields
 a {outline: none;} /* Gets rid of Firefox's dotted borders */
 a img {border: none;} /* Gets rid of IE's blue borders */
 
+.clear {
+  clear: both;
+}
+
 html, body {
   font-family: 'Fanwood Text', serif;
   font-size: 18px;
   line-height: 40px;
   letter-spacing:1.2px;
-  background-color: #f6f0dd;
+  background-color: #e9e0c5;
   color: #5a5235;
 }
 
@@ -38,15 +42,45 @@ a:hover {
 #header h1 {
   font-family: 'Lancelot', Georgia;
   font-size: 30px;
-  line-height: 60px;
+  line-height: 80px;
   color: #897e5a;
   text-shadow: 1px 1px 1px #fff;
 }
 
-.assignment {
+#header { 
+  margin: 0 -25px 0 -25px;
+}
+
+#header a {
+  padding: 20px;
+  margin-bottom: 20px;
+  line-height: 30px;
+  -webkit-transition:background-color 450ms ease-in;  
+  -moz-transition:background-color 450ms ease-in;  
+  -o-transition:background-color 450ms ease-in;  
+  transition:background-color 450ms ease-in; 
+}
+
+#header a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.inactive, .assignment {
   float: left;
-  width: 100px; 
+  width: 200px; 
   height: 150px;
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 15px;
+  -webkit-transition:border-radius 250ms ease-in;  
+  -moz-transition:border-radius 250ms ease-in;  
+  -o-transition:border-radius 250ms ease-in;  
+  transition:border-radius 250ms ease-in; 
+}
+
+.inactive:hover, .assignment:hover {
+  border-radius: 0px;
 }
 
 .big {
@@ -56,8 +90,45 @@ a:hover {
 
 #wrap {
   margin: 0 auto;
-  
+  text-align: center;
+  width: 900px;
+  background-color: #f6f0dd;
+  height: 100%;
+  padding: 25px;
 }
+
+#nav {
+  background-color: #e9e0c5;
+  width: 100%;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.inactive h2 {
+
+}
+
+.inactive h3 {
+
+}
+
+.assignment h2 {
+
+}
+
+.assignment h3 {
+
+}
+
+
 
 </style>
 {% endblock %}
@@ -71,16 +142,19 @@ a:hover {
   <!--Header-->
   
   <div id="header">
-  
+  <div id="nav">
   {% block inHeader %}{% if inGuy %}
-  <a href='/'> Home</a>
+  <a href='/'>Home</a>
+  <a href='/logout/'>Logout</a>
+  <a href='/about/'>About</a>
   {% endif %}{% endblock %}
   
   
   
   {% block outHeader %}{% if not inGuy%}
-  <p> <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your assignments! </p>
+  <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your assignments! <a href='/about/'> About </a> 
   {% endif %}{% endblock %}
+  </div>
   
   <h1><span class="big">D</span>ecompose your life</h1>
   
@@ -99,12 +173,12 @@ a:hover {
 
   <!--Footer-->
   {% block inFooter %}{% if inGuy %}
-  <a href='/logout/'> Logout </a>
   {% endif %}{% endblock %}
 
   {% block outFotter %}{% if not inGuy %}
-  <a href='/about/'> About </a>
+  
   {% endif %}{% endblock %}
+  <div class="clear"></div>
   </div>
 </body>
 </html>
