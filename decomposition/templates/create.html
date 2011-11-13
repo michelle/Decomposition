@@ -11,11 +11,11 @@
       }                 
       if( questions ){
                 $("<p>Title</p>").appendTo("#growOnBoxes");
-                $("<input/>").attr("type","text").attr("id", "newQuest" + i).addClass("newQuest").appendTo("#growOnBoxes");
+                $("<input/>").attr("type","text").attr("id", "newQuest" + i).attr("class", "text").addClass("newQuest").appendTo("#growOnBoxes");
       }
       if( points ) {
                 $("<p>Points</p>").appendTo("#growOnBoxes");
-                $("<input/>").attr("type","text").attr("id", "newPoint" + i).addClass("newPoint").appendTo("#growOnBoxes");
+                $("<input/>").attr("type","text").attr("id", "newPoint" + i).attr("class", "text").addClass("newPoint").appendTo("#growOnBoxes");
                 $("<br/>").appendTo("#growOnBoxes");
       }
     }
@@ -83,14 +83,13 @@
 
 {% block inContent %}{% if inGuy %}
 <div id="all">
-  <p>Title</p>
+  Title:<br>
   <input class="text firstTitle" type='text' value='' /><br/>
-  How Many Questions?
+  Number of Questions:<br>
   <input class="text howManyQuestion" type='number' value='1' /><br/>
-  Do You Want to include..
-  <br/>
-  <input class="questionTitle" type="checkbox"/> Question Title<br/>
-  <input type="checkbox" class="questionPoint"/> Question Points<br/>
+  Include: 
+  <input class="questionTitle" type="checkbox"/> topic 
+  <input type="checkbox" class="questionPoint"/> point value<br>
 
   <button type="button" class="firstButton butt" >Next</button>
   <div id="growOnBoxes"></div>
