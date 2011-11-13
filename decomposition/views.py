@@ -60,6 +60,10 @@ def assign( request, id ):
         id1 = request.POST['id' ]
         if kind == "minusProb":
             ProblemObj = Problem.objects.get( id=id1 )
+            if not ProblemObj.complete:
+                AssignmentObj = Assignment.objects.get( id=id )
+                AssignmentObj.doneprobs += 1
+                AssignmentObj.save()
             ProblemObj.complete = True
             ProblemObj.save()
         elif kind == "plus":
