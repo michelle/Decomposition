@@ -83,7 +83,7 @@ def assign( request, id ):
             assert False, kind
     try:
         assignment = Assignment.objects.get( id=id )
-        problems = Problem.objects.filter( Ass=assignment )
+        problems = Problem.objects.filter( Ass=assignment )[::-1]
     except:
         # Direct to template 404 or something
         assert False
