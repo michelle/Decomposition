@@ -6,13 +6,16 @@
 
   genBoxes = function( number, questions, points ){
     for(var i = 0; i < number; i++ ){
-      if( questions ){
+      if( questions || points ) {
                 $("<p>Question " + i + "</p>").appendTo("#growOnBoxes");
+      }                 
+      if( questions ){
+                $("<p>Title</p>").appendTo("#growOnBoxes");
                 $("<input/>").attr("type","text").attr("id", "newQuest" + i).addClass("newQuest").appendTo("#growOnBoxes");
       }
       if( points ) {
                 $("<p>Points</p>").appendTo("#growOnBoxes");
-                $("<input/>").attr("type","text").attr("id", "newQuest" + i).addClass("newPoint").appendTo("#growOnBoxes");
+                $("<input/>").attr("type","text").attr("id", "newPoint" + i).addClass("newPoint").appendTo("#growOnBoxes");
                 $("<br/>").appendTo("#growOnBoxes");
       }
     }
@@ -21,23 +24,27 @@
     p = points;
   }
 
-  getData = function( number, question, points){
-    var data = { question : {},
-                 points :{} } 
+  getData = function( number, questions, points){
+    var data = []
     for(var i = 0; i < number; i++ ){
+      currObj = { question:"", point:""}
+                       console.log(questions );
       if( questions ){
-                data.question[ i ] = $("#newQuest" + i).val();
+                console.log("YESS");
+                currObj.question = $("#newQuest" + i).val();
       }
       if( points ) {
-                data.question[ i ] = $("#newPoint" + i).val();
+                currObj.point = $("#newPoint" + i).val();
       }
+      data.push(currObj);
     }
-    return data;
+    console.log( data );
+    return JSON.stringify(data);
   }  
 
   $(window).load( function() {
   $(".secondButton").hide();
-
+  $("#success").hide();
   $(".firstButton").click( function (){
     var yesQuest = $(".questionTitle").attr("checked");
     var yesPoint = $(".questionPoint" ).attr("checked");
@@ -47,19 +54,24 @@
        $(".secondButton").show();
     } else {
        $.post( "",
-               { title : $(".questionTitle").val(),
-                 yesQuest : yesQuest,
-                 yesPoint : yesPoint,
-                 data : "" } );
+               { 
+                 title : $(".firstTitle").val(),
+                 problems: "{}" },
+               function(data){
+                  $("#all").hide();
+                  $("#success").show();
+                       } );
     }
   });
 
   $(".secondButton").click( function(){
        $.post( "",
                { title : $(".questionTitle").val(),
-                 yesQuest : yesQuest,
-                 yesPoint : yesPoint,
-                 data : getData( t, q, p ) } );
+                 problems : getData( t, q, p ) },
+               function(data){
+                  $("#all").hide();
+                  $("#success").show();
+               });
   });
 
   });
@@ -71,6 +83,7 @@
 {% endif %}{% endblock %}
 
 {% block inContent %}{% if inGuy %}
+<div id="all">
   <p>Title</p>
   <input type='text' value='' class="firstTitle"/><br/>
   How Many Questions?
@@ -84,8 +97,10 @@
   <div id="growOnBoxes"></div>
   <button type="button" class="secondButton butt" >Next</button>
   
-
-<form method='post' action='' value='add'>
-  {% csrf_token %}
-</form>
 {% endif %}{% endblock %}
+</div>
+<div id="success">
+  Your crap has been successfully saved
+</div>
+{% endif %}
+{% endblock %}
