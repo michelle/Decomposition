@@ -3,7 +3,7 @@
 {% block javascript %}
   {{ block.super }}
   $(window).load( function() {
-     $("#delete").click( function(){
+     $(".delete").click( function(){
         $.post( "",
                 {id: $(this).attr('id') },
                 function(){
