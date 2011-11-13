@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Assignment( models.Model ):
     user = models.ForeignKey( User )
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=500)
     due = models.DateTimeField()
     active = models.BooleanField(default=True)
     doneprobs = models.IntegerField(default=0)
@@ -17,7 +17,7 @@ class Assignment( models.Model ):
 
 class Problem( models.Model ):
     Ass = models.ForeignKey( Assignment )
-    title = models.CharField( max_length=100 )
+    title = models.CharField( max_length=500 )
     complete = models.BooleanField(default=False)
     index = models.IntegerField()
     
@@ -28,5 +28,5 @@ class Problem( models.Model ):
     
 
 class Note( models.Model ):
-    text = models.CharField( max_length=100 )    
+    text = models.CharField( max_length=500 )    
     prob = models.ForeignKey( Problem )
