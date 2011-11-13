@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
@@ -73,3 +74,13 @@ def gen( request ):
                                    due=due )
         AssignObject.save()
     return HttpResponse( 'itz done' )
+
+def register( request ):
+    if request.method == 'POST':
+        form = UserCreationForm( request.POST )
+        if form.is_valid():
+            new_user = form.save()
+            return render_to_responseC( request, 'result.html', locals() )
+    else:
+        form = UserCreationForm()
+    return render_to_responseC( request, "registration/register.html", locals() )

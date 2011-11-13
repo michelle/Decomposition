@@ -5,6 +5,7 @@
   <script type="text/javascript">
   $(window).load( function() {
      $(".delete").click( function(){
+        console.log("3");
         $.post( "",
                 {id: $(this).attr('id') },
                 function(){
