@@ -58,7 +58,7 @@
                  problems: getData( $(".howManyQuestion").val(), false, false ) },
                function(data){
                   $("#all").hide();
-                  $("#success").show();
+                  window.location = "../";
                        } );
     }
   });
@@ -69,7 +69,7 @@
                  problems : getData( t, q, p ) },
                function(data){
                   $("#all").hide();
-                  $("#success").show();
+                  window.location = "../";
                });
   });
 

@@ -34,6 +34,10 @@ def dashboard( request ):
             assert False
     return render_to_responseC( request, 'dashboard.html', locals() )
 
+def about( request ):
+    inGuy = isAuthUser( request )
+    return render_to_responseC( request, 'about.html', locals() )
+
 def create( request ):
     inGuy = isAuthUser( request )
     if request.method == 'POST' and inGuy:
