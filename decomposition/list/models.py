@@ -22,9 +22,7 @@ class Problem( models.Model ):
     index = models.IntegerField()
     
     def calculateNotes(self):
-        ret = map( lambda x: x.text, Note.objects.filter(prob=self) )
-        print ret
-        return map( lambda x: x.text, Note.objects.filter(prob=self) )
+        return Note.objects.filter(prob=self)
 
     notes = property(calculateNotes)
     

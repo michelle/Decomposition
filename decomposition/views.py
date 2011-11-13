@@ -58,9 +58,10 @@ def assign( request, id ):
     if request.method == 'POST':
         kind = request.POST['kind']
         id1 = request.POST['id' ]
-        if kind == "minus":
-            NoteObj = Note.objects.filter( id=id1 )
-            NoteObj.delete()
+        if kind == "minusProb":
+            ProblemObj = Problem.objects.get( id=id1 )
+            ProblemObj.complete = True
+            ProblemObj.save()
         elif kind == "plus":
             ProblemObj = Problem.objects.get( id=id1 )
             text = request.POST['text' ]

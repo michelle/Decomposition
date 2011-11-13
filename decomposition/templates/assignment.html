@@ -4,10 +4,10 @@
   {{ block.super }}
   <script type="text/javascript">
   $(window).load( function() {
-     $(".minus").click( function(){
+     $(".minusProb").click( function(){
         $.post( "",
                 {id: $(this).attr('id'),
-                 kind: "minus" },
+                 kind: "minusProb" },
                 function(){
                      location.reload(true);
                 });
@@ -38,10 +38,10 @@
    <h2>Assignment: {{ assignment.title }}</h2>
    {% for problem in problems %}
       <div class="problem fin{{ problem.complete }}" id="{{ problem.id }}">
-        <h4><span class="minus">x</span> <span class="plus" id="{{ problem.id }}">add note</span>Problem: {{ problem.index }} {{ problem.title }}</h4>
+        <h4><span class="minusProb" id="{{ problem.id }}">x</span> <span class="plus" id="{{ problem.id }}">add note</span>Problem: {{ problem.index }} {{ problem.title }}</h4>
       </div>
       {% for note in problem.notes %}
-          <div class="note"> {{ note }} </div>
+       <div class="note"><h4><span class="minusNote" id="{{ note.id }}">x</span> {{ note.text }} </h4></div>
       {% endfor %}
    {% endfor %}
    </div>
