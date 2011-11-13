@@ -42,8 +42,11 @@ def create( request ):
     inGuy = isAuthUser( request )
     if request.method == 'POST' and inGuy:
         problems = eval(request.POST['problems'])
+        title = request.POST['title']
+        if not title:
+            title = "Untitled"
         AssignmentObj = Assignment( user=inGuy,
-                                    title=request.POST['title'],
+                                    title=title,
                                     due=datetime.datetime.now(),
                                     numofprobs=len(problems))
         AssignmentObj.save()
