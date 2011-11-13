@@ -39,6 +39,11 @@ a:hover {
   color: #b01a1a; 
 }
 
+#footer {
+  font-size: 12px;
+  line-height: 15px;
+}
+
 #header h1 {
   font-family: 'Lancelot', Georgia;
   font-size: 30px;
@@ -172,12 +177,7 @@ h3 {
   {% endblock %}
 
   <!--Footer-->
-  {% block inFooter %}{% if inGuy %}
-  {% endif %}{% endblock %}
-
-  {% block outFotter %}{% if not inGuy %}
-  
-  {% endif %}{% endblock %}
+  <div id="footer">HackJamJamJamJam</div>
   <div class="clear"></div>
   </div>
 </body>
