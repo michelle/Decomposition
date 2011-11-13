@@ -7,7 +7,13 @@ class Assignment( models.Model ):
     title = models.CharField(max_length=100)
     due = models.DateTimeField()
     active = models.BooleanField(default=True)
+    doneprobs = models.IntegerField(default=0)
     numofprobs = models.IntegerField()
+
+    def calculatePercent(self):
+        return int(self.doneprobs/float(self.numofprobs)*100)
+
+    percent = property(calculatePercent)
 
 class Problem( models.Model ):
     Ass = models.ForeignKey( Assignment )
