@@ -3,7 +3,13 @@ from django.contrib.auth.models import User
 from decomposition.list.models import Assignment, Problem, Note
 import datetime
 
+def isAuthUser( request ):
+    return request.user if request.user.is_authenticated() else None
+
 def dashboard( request ):
+    inGuy = isAuthUser( request )
+    Activeassignments = Assignment.objects.filter( user=inGuy )
+    # assert False, Activeassignments
     return render_to_response( 'dashboard.html', locals() )
 
 def gen( request ):
