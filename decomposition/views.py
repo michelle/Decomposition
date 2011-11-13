@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
 from decomposition.list.models import Assignment, Problem, Note
+from django.utils import simplejson
 import datetime
 
 def isAuthUser( request ):
@@ -18,14 +19,22 @@ def dashboard( request ):
     # assert False, Activeassignments
     return render_to_response( 'dashboard.html', locals() )
 
+
 def create( request ):
     inGuy = isAuthUser( request )
     if request.method == 'POST' and inGuy:
-        AssingmentObj = Assignment( user=inGuy,
+        AssignmentObj = Assignment( user=inGuy,
                                     title=request.POST['title'],
                                     due=datetime.datetime.now() )
-        AssingmentObj.save()
-        success = True
+        AssignmentObj.save()
+        problems = eval(request.POST['problems'])
+        for problem in problems:
+            ProblemObj = Problem( Ass=AssignmentObj,
+                                  title=problem[ 'question' ],
+                                  # point=0,
+                                  )
+            ProblemObj.save()
+        return HttpResponse(simplejson.dumps({"success":"Your crap has been successfully saved" }), 'application/json' )
     return render_to_responseC( request, 'create.html', locals() )
 
 def gen( request ):
