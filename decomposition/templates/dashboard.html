@@ -25,7 +25,7 @@
 {% endblock %}
 
   {% block inContent %}{% if inGuy %}
-  <span class="sidetab">Dashboard</span><br>
+  <span class="sidetab">Dashboard</span><span class="create">Add New</span><br> 
   
    {% for assignment in AA %}
       <a href="assignment/{{ assignment.id }}" ><div class="assignment" id={{ assignment.id }}>
@@ -33,8 +33,8 @@
         <h3>{{ assignment.due }}</h3>
       </div></a><span class="delete inact" id="{{ assignment.id }}">x</span>
    {% endfor %}
-   <br>
-   <span class="sidetab">Completed</span><br>
+   <div class="clear"></div>
+   <span class="sidetab2">Completed</span><br>
    <div id="inactiveThings">
    {% for assignment in iAA %}
       <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
