@@ -46,7 +46,7 @@
   $(".firstButton").click( function (){
     var yesQuest = $(".questionTitle").attr("checked");
     var yesPoint = $(".questionPoint" ).attr("checked");
-    if (  yesQuest || yesPoint || $(".howManyQuestion").val() > 0) {
+    if (  yesQuest || yesPoint && $(".howManyQuestion").val() > 0) {
        genBoxes( $(".howManyQuestion").val(), yesQuest, yesPoint );
        $(".firstButton").hide();
        $(".secondButton").show();
