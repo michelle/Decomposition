@@ -16,13 +16,22 @@ def render_to_responseC( request, link, context ):
 
 def dashboard( request ):
     inGuy = isAuthUser( request )
-    Activeassignments = Assignment.objects.filter( user=inGuy )
+    All = Assignment.objects.filter( user=inGuy )
+    AA = All.filter( active=True )
+    iAA = All.filter( active=False )
     if request.method == 'POST' and inGuy:
+        kind = request.POST['kind']
         id = request.POST['id']
-        AssignmentObj = Activeassingments.get( id=id )
-        AssignmentObj.active = False
-        AssignmentObj.save()            
-    return render_to_response( 'dashboard.html', locals() )
+        if kind == "remo":
+            AssignmentObj = iAA.get( id=id )
+            AssignmentObj.delete()
+        elif kind == "inact":
+            AssignmentObj = AA.get( id=id )
+            AssignmentObj.active = False
+            AssignmentObj.save()
+        else:
+            assert False
+    return render_to_responseC( request, 'dashboard.html', locals() )
 
 def create( request ):
     inGuy = isAuthUser( request )

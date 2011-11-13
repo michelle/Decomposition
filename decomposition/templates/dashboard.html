@@ -4,10 +4,18 @@
   {{ block.super }}
   <script type="text/javascript">
   $(window).load( function() {
-     $(".delete").click( function(){
-        console.log("3");
+     $(".inact").click( function(){
         $.post( "",
-                {id: $(this).attr('id') },
+                {id: $(this).attr('id'),
+                 kind: "inact" },
+                function(){
+                     location.reload(true);
+                });
+     });
+     $(".remo").click( function(){
+        $.post( "",
+                {id: $(this).attr('id'),
+                 kind: "remo" },
                 function(){
                      location.reload(true);
                 });
@@ -19,17 +27,17 @@
   {% block inContent %}{% if inGuy %}
   <span class="sidetab">Dashboard</span><br>
   
-   {% for assignment in Activeassignments %}
+   {% for assignment in AA %}
       <a href="assignment/{{ assignment.id }}" ><div class="assignment" id={{ assignment.id }}>
         <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
-      </div></a><span class="delete" id="{{ assignment.id }}">x</span>
+      </div></a><span class="delete inact" id="{{ assignment.id }}">x</span>
    {% endfor %}
-   {% for assignment in inActiveassignments %}
+   {% for assignment in iAA %}
       <a href="assignment/{{ assignment.id }}" ><div class="inactive" id={{ assignment.id }}>
         <h2>{{ assignment.title }}</h2>
         <h3>{{ assignment.due }}</h3>
-      </div></a> <span class="delete" id="{{ assignment.id }}">x</span>
+      </div></a> <span class="delete remo" id="{{ assignment.id }}">x</span>
    {% endfor %}
    {% endif %}
 {% endblock %}
