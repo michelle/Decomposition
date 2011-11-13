@@ -6,7 +6,7 @@
    <h2>Assignment: {{ assignment.title }}</h2>
    {% for problem in problems %}
       <div class="problem fin{{ problem.complete }}" id={{ problem.id }}>
-        <h4>Problem: {{ problem.index }} {{ problem.title }}</h4>
+        <h4><span class="minus">x</span> <span class="plus">add note</span>Problem: {{ problem.index }} {{ problem.title }}</h4>
       </div>
 
    {% endfor %}
