@@ -23,11 +23,11 @@
   }
 
   getData = function( number, questions, points){
-    var data = []
+    var data = [];
+    
     for(var i = 0; i < number; i++ ){
       currObj = { question:"", point:""}
       if( questions ){
-                console.log("YESS");
                 currObj.question = $("#newQuest" + i).val();
       }
       if( points ) {

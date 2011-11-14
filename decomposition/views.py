@@ -5,6 +5,7 @@ from django.core.context_processors import csrf
 from django.contrib.auth.models import User
 from decomposition.list.models import Assignment, Problem, Note
 from django.utils import simplejson
+from ast import literal_eval
 import datetime
 
 def isAuthUser( request ):
@@ -15,7 +16,6 @@ def render_to_responseC( request, link, context ):
     return render_to_response( link, context )
 
 def dashboard( request ):
-    thing = {}
     inGuy = isAuthUser( request )
     All = Assignment.objects.filter( user=inGuy )
     AA = All.filter( active=True )
@@ -41,7 +41,7 @@ def about( request ):
 def create( request ):
     inGuy = isAuthUser( request )
     if request.method == 'POST' and inGuy:
-        problems = eval(request.POST['problems'])
+        problems = literal_eval(request.POST['problems'])
         title = request.POST['title']
         if not title:
             title = "Untitled"

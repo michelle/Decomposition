@@ -11,7 +11,10 @@ class Assignment( models.Model ):
     numofprobs = models.IntegerField()
 
     def calculatePercent(self):
-        return int(self.doneprobs/float(self.numofprobs)*100)
+        try:
+            return int(self.doneprobs/float(self.numofprobs)*100)
+        except:
+            return "infinity"
 
     percent = property(calculatePercent)
 
