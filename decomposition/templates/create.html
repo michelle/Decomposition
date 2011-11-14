@@ -44,13 +44,18 @@
   $("#success").hide();
   $("#error").hide();
   $(".firstButton").click( function (){
+    
     var yesQuest = $(".questionTitle").attr("checked");
     var yesPoint = $(".questionPoint" ).attr("checked");
-    if (  yesQuest || yesPoint && $(".howManyQuestion").val() > 0) {
+    
+
+    if ( $(".howManyQuestion").val() <= 0 ) {
+       $("#error").fadeToggle();return;
+    } else if (  yesQuest || yesPoint ) {
        genBoxes( $(".howManyQuestion").val(), yesQuest, yesPoint );
        $(".firstButton").hide();
        $(".secondButton").show();
-    } else if ($(".howManyQuestion").val() > 0) {
+    } else {
        $.post( "",
                { 
                  title : $(".firstTitle").val(),
@@ -59,8 +64,6 @@
                   $("#all").hide();
                   window.location = "../";
                        } );
-    } else {
-      $("#error").fadeToggle();
     }
   });
 
