@@ -50,6 +50,7 @@ def create( request ):
                                     due=datetime.datetime.now(),
                                     numofprobs=len(problems))
         AssignmentObj.save()
+        if not problems: problems = [{}]
         for i, problem in enumerate(problems):
             title = problem[ 'question' ] if problem[ 'question' ] else ( "Problem :" + str( i + 1 ) )
             ProblemObj = Problem( Ass=AssignmentObj,
